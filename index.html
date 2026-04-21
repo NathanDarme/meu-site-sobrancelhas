@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Maria Eduarda Design | Sobrancelhas que realçam sua essência</title>
+    <!-- EmailJS CDN -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', 'Poppins', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: #fff9fb;
+            color: #2c2c2c;
+            scroll-behavior: smooth;
+        }
+
+        header {
+            background: #ffffff;
+            box-shadow: 0 1px 0 rgba(232, 162, 182, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 0.8rem 2rem;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #2c2c2c;
+        }
+
+        .logo span {
+            font-weight: 600;
+            color: #e8a2b6;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 450;
+            color: #4a4a4a;
+            transition: 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            color: #e8a2b6;
+        }
+
+        /* RESPONSIVIDADE DO MENU NO CELULAR */
+        @media (max-width: 700px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            .nav-links {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 1.2rem;
+            }
+        }
+
+        .hero {
+            max-width: 1200px;
+            margin: 2rem auto 2rem;
+            padding: 2rem 2rem 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        /* RESPONSIVIDADE DO HERO NO CELULAR */
+        @media (max-width: 700px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 1.5rem;
+            }
+            .hero-text {
+                order: 2;
+            }
+            .hero-img {
+                order: 1;
+                margin-bottom: 1rem;
+            }
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 260px;
+        }
+
+        .hero-text h1 {
+            font-size: 2.5rem;
+            font-weight: 500;
+            line-height: 1.2;
+            color: #2c2c2c;
+            letter-spacing: -0.02em;
+        }
+
+        @media (max-width: 700px) {
+            .hero-text h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        .hero-text .tagline {
+            font-size: 0.85rem;
+            color: #e8a2b6;
+            margin-top: 0.5rem;
+            letter-spacing: 3px;
+            font-weight: 500;
+        }
+
+        .hero-text p {
+            font-size: 1rem;
+            margin: 1.2rem 0 1.5rem;
+            color: #6b6b6b;
+            line-height: 1.5;
+        }
+
+        .btn-agendar {
+            background: #e8a2b6;
+            border: none;
+            color: white;
+            font-weight: 500;
+            padding: 0.8rem 2rem;
+            font-size: 0.9rem;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+
+        .btn-agendar:hover {
+            background: #d48aa0;
+            transform: translateY(-2px);
+        }
+
+        .hero-img {
+            flex: 1;
+            text-align: center;
+        }
+
+        .hero-img img {
+            max-width: 100%;
+            width: 280px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 10px 30px rgba(232, 162, 182, 0.15);
+        }
+
+        /* RESPONSIVIDADE DA SEÇÃO SOBRE */
+        .sobre {
+            background: #ffffff;
+            padding: 4rem 2rem;
+        }
+
+        .sobre-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        @media (max-width: 700px) {
+            .sobre-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .sobre-foto {
+                order: 1;
+            }
+            .sobre-texto {
+                order: 2;
+            }
+        }
+
+        .sobre-texto {
+            flex: 1;
+        }
+
+        .sobre-texto h2 {
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: #2c2c2c;
+        }
+
+        .sobre-texto .sub {
+            color: #e8a2b6;
+            margin-bottom: 1.5rem;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+        }
+
+        .sobre-texto p {
+            color: #6b6b6b;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .sobre-foto {
+            flex: 0.5;
+            text-align: center;
+        }
+
+        .sobre-foto img {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #fce4ea;
+            border: 3px solid #e8a2b6;
+        }
+
+        .instagram-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #e8a2b6;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .servicos {
+            background: #fff9fb;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: #2c2c2c;
+        }
+
+        .section-subtitle {
+            color: #e8a2b6;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            margin-bottom: 2rem;
+        }
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.8rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 1.5rem;
+            width: 260px;
+            transition: 0.25s;
+            cursor: pointer;
+            border: 1px solid #fce4ea;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: #e8a2b6;
+            box-shadow: 0 12px 24px rgba(232, 162, 182, 0.1);
+        }
+
+        .card h3 {
+            font-size: 1.15rem;
+            font-weight: 500;
+            margin-bottom: 0.4rem;
+            color: #2c2c2c;
+        }
+
+        .price {
+            font-weight: 500;
+            color: #e8a2b6;
+            font-size: 1.1rem;
+            margin: 0.6rem 0;
+        }
+
+        .card p {
+            color: #7a7a7a;
+            font-size: 0.8rem;
+            line-height: 1.4;
+        }
+
+        .card small {
+            display: block;
+            margin-top: 0.5rem;
+            color: #e8a2b6;
+            font-size: 0.7rem;
+        }
+
+        /* AJUSTE DAS IMAGENS DOS PROCEDIMENTOS - COM TAMANHOS ESPECÍFICOS */
+        .card-imagem {
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            background-color: #fce4ea;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* IMAGENS AUMENTADAS PARA PROCEDIMENTOS ESPECÍFICOS */
+        .card-imagem.microblading,
+        .card-imagem.reconstrucao,
+        .card-imagem.design-simples {
+            height: 220px;
+        }
+
+        .card-imagem.microblading img,
+        .card-imagem.reconstrucao img,
+        .card-imagem.design-simples img {
+            transform: scale(1.1);
+        }
+
+        .card-imagem img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+            background-color: #fce4ea;
+        }
+
+        .card:hover .card-imagem img {
+            transform: scale(1.02);
+        }
+
+        /* GALERIA */
+        .galeria {
+            padding: 4rem 2rem;
+            background: #ffffff;
+            text-align: center;
+        }
+
+        .galeria-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto 0;
+        }
+
+        .galeria-item {
+            background: #fff9fb;
+            border-radius: 20px;
+            overflow: hidden;
+            width: 320px;
+            transition: 0.25s;
+            border: 1px solid #fce4ea;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .galeria-item:hover {
+            transform: translateY(-4px);
+            border-color: #e8a2b6;
+            box-shadow: 0 12px 24px rgba(232, 162, 182, 0.1);
+        }
+
+        .galeria-img {
+            width: 100%;
+            height: 280px;
+            object-fit: contain;
+            display: block;
+            background: #fce4ea;
+            padding: 0.5rem;
+        }
+
+        .galeria-info {
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .galeria-info h4 {
+            color: #2c2c2c;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        .antes-depois {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .antes-depois span {
+            background: #e8a2b6;
+            color: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+
+        /* RESPONSIVIDADE DA GALERIA NO CELULAR */
+        @media (max-width: 700px) {
+            .galeria-item {
+                width: 280px;
+            }
+            .galeria-img {
+                height: 240px;
+            }
+            .card-imagem {
+                height: 150px;
+            }
+            .card-imagem.microblading,
+            .card-imagem.reconstrucao,
+            .card-imagem.design-simples {
+                height: 180px;
+            }
+        }
+
+        .agendamento-section {
+            padding: 4rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .booking-panel {
+            background: #ffffff;
+            border-radius: 32px;
+            padding: 2rem;
+            border: 1px solid #fce4ea;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+        }
+
+        @media (max-width: 700px) {
+            .booking-panel {
+                padding: 1.5rem;
+            }
+        }
+
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            flex: 1;
+            min-width: 180px;
+        }
+
+        label {
+            font-weight: 500;
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #4a4a4a;
+            font-size: 0.8rem;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border-radius: 12px;
+            border: 1.5px solid #fce4ea;
+            background: #fff9fb;
+            font-size: 0.9rem;
+            outline: none;
+            transition: 0.2s;
+            color: #2c2c2c;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: #e8a2b6;
+            box-shadow: 0 0 0 3px rgba(232, 162, 182, 0.1);
+        }
+
+        .horarios-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin: 0.8rem 0 0.3rem;
+        }
+
+        .hora-btn {
+            background: #fff9fb;
+            border: 1px solid #fce4ea;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 450;
+            color: #4a4a4a;
+            font-size: 0.8rem;
+        }
+
+        .hora-btn.selected {
+            background: #e8a2b6;
+            border-color: #e8a2b6;
+            color: white;
+        }
+
+        .hora-btn.disabled {
+            opacity: 0.4;
+            text-decoration: line-through;
+            cursor: not-allowed;
+        }
+
+        .lgpd-container {
+            margin: 1.5rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            background: #fff9fb;
+            padding: 1rem;
+            border-radius: 16px;
+            border: 1px solid #fce4ea;
+        }
+
+        .lgpd-container input {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+            cursor: pointer;
+            accent-color: #e8a2b6;
+        }
+
+        .lgpd-container label {
+            flex: 1;
+            font-size: 0.75rem;
+            line-height: 1.4;
+            color: #6b6b6b;
+            cursor: pointer;
+            margin-bottom: 0;
+        }
+
+        .lgpd-container a {
+            color: #e8a2b6;
+            text-decoration: none;
+        }
+
+        .lgpd-container a:hover {
+            text-decoration: underline;
+        }
+
+        .btn-submit {
+            background: #e8a2b6;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 0.5rem;
+            transition: 0.2s;
+        }
+
+        .btn-submit:hover {
+            background: #d48aa0;
+        }
+
+        .btn-submit:disabled {
+            background: #d4b0bd;
+            cursor: not-allowed;
+        }
+
+        .endereco {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #fce4ea;
+            font-size: 0.8rem;
+            color: #8a8a8a;
+            line-height: 1.6;
+        }
+
+        .endereco strong {
+            color: #e8a2b6;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #e8a2b6;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            z-index: 1000;
+            animation: slideIn 0.3s ease;
+            font-size: 0.85rem;
+        }
+
+        .toast.error {
+            background: #d9534f;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #ffffff;
+            color: #8a8a8a;
+            border-top: 1px solid #fce4ea;
+            font-size: 0.8rem;
+        }
+
+        .info-banner {
+            background: #fff9fb;
+            border-radius: 16px;
+            padding: 0.8rem;
+            margin-top: 1rem;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #8a8a8a;
+            border: 1px solid #fce4ea;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.8s linear infinite;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .modal-lgpd {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1001;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 2rem;
+            border-radius: 24px;
+            margin: 1rem;
+            position: relative;
+        }
+
+        .modal-content h3 {
+            color: #e8a2b6;
+            margin-bottom: 1rem;
+        }
+
+        .modal-content p {
+            color: #6b6b6b;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .close-modal {
+            background: #e8a2b6;
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="nav-container">
+        <div class="logo">eduarda <span>design</span></div>
+        <ul class="nav-links">
+            <li><a href="#home">Início</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#servicos">Procedimentos</a></li>
+            <li><a href="#galeria">Resultados</a></li>
+            <li><a href="#agendar">Agendar</a></li>
+        </ul>
+    </div>
+</header>
+
+<section id="home" class="hero">
+    <div class="hero-text">
+        <div class="tagline">REALÇANDO SUA ESSÊNCIA ATRAVÉS DO OLHAR</div>
+        <h1>Design de Sobrancelhas</h1>
+        <p>Técnicas precisas para realçar a naturalidade de cada olhar, cuidando de cada detalhe com atenção e dedicação.</p>
+        <button class="btn-agendar" onclick="document.getElementById('agendar').scrollIntoView({behavior:'smooth'})">Agendar horário →</button>
+    </div>
+    <div class="hero-img">
+        <img id="heroImage" src="imagens/imagem-cabecalho.jpg" alt="Maria Eduarda" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 200 200\'%3E%3Ccircle cx=\'100\' cy=\'100\' r=\'95\' fill=\'%23e8a2b6\'/%3E%3Ccircle cx=\'100\' cy=\'85\' r=\'35\' fill=\'%23fce4ea\'/%3E%3Cpath fill=\'%23e8a2b6\' d=\'M80,130 L120,130 L115,145 L85,145 Z\'/%3E%3C/svg%3E'">
+    </div>
+</section>
+
+<section id="sobre" class="sobre">
+    <div class="sobre-container">
+        <div class="sobre-texto">
+            <h2>Maria Eduarda</h2>
+            <div class="sub">Especialista em Sobrancelhas</div>
+            <p>Oi! Eu sou a Maria Eduarda, especialista em sobrancelhas desde os 16 anos. Ao longo desse tempo, desenvolvi técnicas precisas para realçar a naturalidade de cada olhar, cuidando de cada detalhe com atenção e dedicação.</p>
+            <p>Atualmente, atendo em meu próprio espaço, oferecendo um serviço profissional, personalizado e confiável, garantindo sobrancelhas que valorizam a sua beleza única.</p>
+            <a href="https://instagram.com/maria.eduarda_design" target="_blank" class="instagram-link">📷 @maria.eduarda_design</a>
+        </div>
+        <div class="sobre-foto">
+            <img id="sobreImage" src="imagens/mariaeduarda.jpeg" alt="Maria Eduarda" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 200 200\'%3E%3Ccircle cx=\'100\' cy=\'100\' r=\'95\' fill=\'%23fce4ea\'/%3E%3Ccircle cx=\'100\' cy=\'80\' r=\'30\' fill=\'%23e8a2b6\'/%3E%3C/svg%3E'">
+        </div>
+    </div>
+</section>
+
+<section id="servicos" class="servicos">
+    <h2 class="section-title">Procedimentos</h2>
+    <div class="section-subtitle">ESCOLHA O TRATAMENTO IDEAL</div>
+    <div class="cards" id="cards-servicos"></div>
+</section>
+
+<section id="galeria" class="galeria">
+    <h2 class="section-title">Resultados</h2>
+    <div class="section-subtitle">ANTES & DEPOIS</div>
+    <div class="galeria-grid" id="galeriaGrid"></div>
+</section>
+
+<section id="agendar" class="agendamento-section">
+    <div class="booking-panel">
+        <h2 style="color:#2c2c2c; margin-bottom: 1.5rem; font-weight: 500;">Agendar horário</h2>
+        <form id="bookingForm">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Nome completo</label>
+                    <input type="text" id="clienteNome" placeholder="Seu nome" required>
+                </div>
+                <div class="form-group">
+                    <label>E-mail</label>
+                    <input type="email" id="clienteEmail" placeholder="seu@email.com" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>WhatsApp</label>
+                    <input type="tel" id="clienteTel" placeholder="(00) 00000-0000" required>
+                </div>
+                <div class="form-group">
+                    <label>Procedimento</label>
+                    <select id="servicoSelect" required></select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Data</label>
+                    <input type="date" id="dataAgendamento" required>
+                </div>
+                <div class="form-group">
+                    <label>Horário</label>
+                    <div id="horariosContainer" class="horarios-grid"></div>
+                    <input type="hidden" id="horaSelecionada" value="">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Observações</label>
+                <textarea rows="2" id="obs" placeholder="Alguma preferência?"></textarea>
+            </div>
+
+            <div class="lgpd-container">
+                <input type="checkbox" id="lgpdCheckbox" required>
+                <label for="lgpdCheckbox">
+                    Li e concordo com os <a href="#" id="openLgpdModal">termos da LGPD</a>. Autorizo o armazenamento e tratamento dos meus dados pessoais para a realização do agendamento e comunicação sobre os serviços.
+                </label>
+            </div>
+
+            <button type="submit" class="btn-submit" id="submitBtn">Confirmar agendamento</button>
+            <div class="info-banner">
+                ⏱️ Agendamento sujeito à confirmação | 💖 Espaço exclusivo
+            </div>
+        </form>
+    </div>
+</section>
+
+<div id="lgpdModal" class="modal-lgpd">
+    <div class="modal-content">
+        <h3>📋 Política de Privacidade - LGPD</h3>
+        <p>De acordo com a Lei Geral de Proteção de Dados (LGPD - Lei 13.709/2018), seus dados pessoais são tratados com segurança e transparência.</p>
+        <p><strong>Quais dados coletamos?</strong><br>Nome, e-mail, telefone e informações sobre o serviço desejado.</p>
+        <p><strong>Para que finalidade?</strong><br>Realizar seu agendamento, confirmar horários e manter comunicação sobre os serviços contratados.</p>
+        <p><strong>Compartilhamento:</strong><br>Seus dados não são compartilhados com terceiros, exceto quando necessário para a execução do serviço.</p>
+        <p><strong>Seus direitos:</strong><br>Você pode solicitar a exclusão ou correção dos seus dados a qualquer momento.</p>
+        <p><strong>Armazenamento:</strong><br>Seus dados ficam armazenados por até 12 meses para fins de histórico de atendimento.</p>
+        <button class="close-modal" onclick="fecharModal()">Entendi</button>
+    </div>
+</div>
+
+<footer>
+    <p>Eduarda Design • realçando sua essência através do olhar</p>
+    <div class="endereco">
+        <strong>📍 Endereço:</strong><br>
+        Rua Cezar Moranza, 6 - Vila Santa Terezinha<br>
+        Sumaré - SP | CEP: 13174-405
+    </div>
+    <p style="margin-top: 0.8rem;">© 2024 • Todos os direitos reservados</p>
+</footer>
+
+<script>
+    // CONFIGURAÇÃO DO EMAILJS (SUBSTITUIR AQUI)
+    const EMAILJS_CONFIG = {
+        PUBLIC_KEY: "YOUR_PUBLIC_KEY",
+        SERVICE_ID: "YOUR_SERVICE_ID",
+        TEMPLATE_ID: "YOUR_TEMPLATE_ID"
+    };
+    
+    const STUDIO_EMAIL = "nathan.darme@gmail.com";
+    const WHATSAPP_NUMBER = "5519991489309";
+    
+    if (EMAILJS_CONFIG.PUBLIC_KEY !== "YOUR_PUBLIC_KEY") {
+        emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
+    }
+
+    // SERVIÇOS COM IMAGENS LOCAIS E CLASSES ESPECIAIS PARA AUMENTAR
+    const servicos = [
+        { id: 1, nome: "Design com Henna", desc: "Método Flow Beauty, alinhamento perfeito e resultado natural", preco: 85, tempo: "1h", imagem: "imagens/design-henna.jpeg", classe: "" },
+        { id: 2, nome: "Microblading Fios Realistas", desc: "Técnica manual que reproduz o aspecto natural dos pelos", preco: 450, tempo: "2h", imagem: "imagens/microblading.jpeg", classe: "microblading" },
+        { id: 3, nome: "Protocolo de Reconstrução", desc: "Argilaterapia + óleos essenciais + cromoterapia", preco: 120, tempo: "1h30", imagem: "imagens/reconstrucao.jpeg", classe: "reconstrucao" },
+        { id: 4, nome: "Brow Lamination", desc: "Realinhamento e preenchimento, efeito natural", preco: 150, tempo: "1h", imagem: "imagens/brow-lamination.jpeg", classe: "" },
+        { id: 5, nome: "Lash Lifting", desc: "Cílios naturalmente curvados", preco: 130, tempo: "1h", imagem: "imagens/lash-lifting.jpeg", classe: "" },
+        { id: 6, nome: "Design Simples", desc: "Manutenção do formato", preco: 55, tempo: "30min", imagem: "imagens/design-simples.jpeg", classe: "design-simples" },
+        { id: 7, nome: "Spa de Lábios", desc: "Esfoliação + hidratação", preco: 70, tempo: "40min", imagem: "imagens/spa-labios.jpeg", classe: "" }
+    ];
+
+    // GALERIA
+    const modelosGaleria = [
+        { nome: "Brow Lamination", antes: "ANTES", depois: "DEPOIS", img: "imagens/resultado-brow.jpg" },
+        { nome: "Microblading", antes: "ANTES", depois: "DEPOIS", img: "imagens/resultado-micro.jpg" },
+        { nome: "Design com Henna", antes: "ANTES", depois: "DEPOIS", img: "imagens/resultado-henna.jpg" },
+        { nome: "Lash Lifting", antes: "ANTES", depois: "DEPOIS", img: "imagens/resultado-lash.jpg" }
+    ];
+
+    const horariosPadrao = ["09:00", "10:00", "11:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"];
+    let agendamentos = [];
+
+    function enviarWhatsApp(dados) {
+        const mensagem = `🆕 *NOVO AGENDAMENTO!* 🆕
+        
+👤 *Cliente:* ${dados.nome}
+📞 *WhatsApp:* ${dados.telefone}
+📧 *E-mail:* ${dados.email}
+
+💅 *Procedimento:* ${dados.servico}
+💰 *Valor:* R$ ${dados.preco}
+
+📅 *Data:* ${dados.data}
+⏰ *Horário:* ${dados.hora}
+
+${dados.observacao ? `📝 *Observações:* ${dados.observacao}` : ''}
+
+📍 *Endereço do Studio:*
+Rua Cezar Moranza, 6 - Vila Santa Terezinha
+Sumaré - SP | CEP: 13174-405
+
+🔔 *Cliente aguarda confirmação!*`;
+
+        const mensagemCodificada = encodeURIComponent(mensagem);
+        const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${mensagemCodificada}`;
+        window.open(whatsappLink, '_blank');
+        return whatsappLink;
+    }
+
+    function showToast(message, isError = false) {
+        const toast = document.createElement('div');
+        toast.className = `toast ${isError ? 'error' : ''}`;
+        toast.textContent = message;
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 4000);
+    }
+
+    async function enviarEmailConfirmacao(agendamento) {
+        if (EMAILJS_CONFIG.PUBLIC_KEY === "YOUR_PUBLIC_KEY") return true;
+        try {
+            const servico = servicos.find(s => s.id === agendamento.servicoId);
+            const templateParamsCliente = {
+                to_email: agendamento.email,
+                to_name: agendamento.nome,
+                cliente_nome: agendamento.nome,
+                servico: servico.nome,
+                data: agendamento.data,
+                hora: agendamento.hora,
+                preco: `R$ ${servico.preco}`,
+                observacao: agendamento.observacao || "Nenhuma",
+                studio_email: STUDIO_EMAIL
+            };
+            const templateParamsStudio = {
+                to_email: STUDIO_EMAIL,
+                cliente_nome: agendamento.nome,
+                cliente_email: agendamento.email,
+                cliente_telefone: agendamento.telefone,
+                servico: servico.nome,
+                data: agendamento.data,
+                hora: agendamento.hora,
+                preco: `R$ ${servico.preco}`,
+                observacao: agendamento.observacao || "Nenhuma"
+            };
+            await emailjs.send(EMAILJS_CONFIG.SERVICE_ID, EMAILJS_CONFIG.TEMPLATE_ID, templateParamsCliente);
+            await emailjs.send(EMAILJS_CONFIG.SERVICE_ID, EMAILJS_CONFIG.TEMPLATE_ID, templateParamsStudio);
+            return true;
+        } catch (error) {
+            console.error("Erro email:", error);
+            return false;
+        }
+    }
+
+    function carregarAgendamentosStorage() {
+        const stored = localStorage.getItem("eduarda_agendamentos");
+        agendamentos = stored ? JSON.parse(stored) : [];
+    }
+
+    function salvarAgendamentosStorage() {
+        localStorage.setItem("eduarda_agendamentos", JSON.stringify(agendamentos));
+    }
+
+    function getHorariosOcupados(data) {
+        return agendamentos.filter(ag => ag.data === data).map(ag => ag.hora);
+    }
+
+    let selectedHora = "";
+
+    function renderizarHorarios(dataSelecionada) {
+        const container = document.getElementById("horariosContainer");
+        if (!dataSelecionada) {
+            container.innerHTML = "<div style='padding:0.5rem; color:#aaa;'>Selecione uma data</div>";
+            return;
+        }
+        const ocupados = getHorariosOcupados(dataSelecionada);
+        let html = "";
+        horariosPadrao.forEach(hora => {
+            const isOcupado = ocupados.includes(hora);
+            const disabledClass = isOcupado ? "disabled" : "";
+            const selectedClass = (selectedHora === hora && !isOcupado) ? "selected" : "";
+            html += `<div class="hora-btn ${disabledClass} ${selectedClass}" data-hora="${hora}" data-ocupado="${isOcupado}">${hora}</div>`;
+        });
+        container.innerHTML = html;
+        document.querySelectorAll(".hora-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+                const ocupado = btn.getAttribute("data-ocupado") === "true";
+                if (ocupado) { showToast("Horário já reservado", true); return; }
+                const hora = btn.getAttribute("data-hora");
+                document.querySelectorAll(".hora-btn").forEach(b => b.classList.remove("selected"));
+                btn.classList.add("selected");
+                selectedHora = hora;
+                document.getElementById("horaSelecionada").value = hora;
+            });
+        });
+    }
+
+    function preencherServicos() {
+        const select = document.getElementById("servicoSelect");
+        select.innerHTML = "";
+        servicos.forEach(serv => {
+            const option = document.createElement("option");
+            option.value = serv.id;
+            option.textContent = `${serv.nome} - R$ ${serv.preco}`;
+            select.appendChild(option);
+        });
+    }
+
+    function criarCardsServicos() {
+        const container = document.getElementById("cards-servicos");
+        container.innerHTML = "";
+        
+        servicos.forEach(serv => {
+            const card = document.createElement("div");
+            card.classList.add("card");
+            
+            // Adiciona classe especial se tiver
+            const imagemClass = serv.classe ? `card-imagem ${serv.classe}` : "card-imagem";
+            
+            card.innerHTML = `
+                <div class="${imagemClass}">
+                    <img src="${serv.imagem}" alt="${serv.nome}" onerror="this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAw--8DCac8RG_gRFYLkUIYiuu3X3wlJRNMQ&s'">
+                </div>
+                <h3>${serv.nome}</h3>
+                <div class="price">R$ ${serv.preco}</div>
+                <p>${serv.desc}</p>
+                <small>⏱️ ${serv.tempo}</small>
+            `;
+            
+            card.addEventListener("click", () => {
+                const selectServ = document.getElementById("servicoSelect");
+                for (let i = 0; i < selectServ.options.length; i++) {
+                    if (selectServ.options[i].value == serv.id) {
+                        selectServ.selectedIndex = i;
+                        break;
+                    }
+                }
+                document.getElementById("agendar").scrollIntoView({ behavior: "smooth" });
+            });
+            container.appendChild(card);
+        });
+    }
+
+    function criarGaleria() {
+        const container = document.getElementById("galeriaGrid");
+        container.innerHTML = "";
+        modelosGaleria.forEach(modelo => {
+            const item = document.createElement("div");
+            item.classList.add("galeria-item");
+            item.innerHTML = `
+                <img src="${modelo.img}" alt="${modelo.nome}" class="galeria-img" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 200 200\'%3E%3Crect width=\'200\' height=\'200\' fill=\'%23fce4ea\'/%3E%3Ctext x=\'100\' y=\'110\' text-anchor=\'middle\' fill=\'%23e8a2b6\' font-size=\'14\'%3E${modelo.nome}%3C/text%3E%3C/svg%3E'">
+                <div class="galeria-info">
+                    <h4>${modelo.nome}</h4>
+                    <div class="antes-depois">
+                        <span>📸 ${modelo.antes}</span>
+                        <span>✨ ${modelo.depois}</span>
+                    </div>
+                </div>
+            `;
+            container.appendChild(item);
+        });
+    }
+
+    async function adicionarAgendamento(event) {
+        event.preventDefault();
+        
+        const lgpdChecked = document.getElementById("lgpdCheckbox").checked;
+        if (!lgpdChecked) {
+            showToast("Você precisa aceitar os termos da LGPD para continuar.", true);
+            return;
+        }
+        
+        const submitBtn = document.getElementById("submitBtn");
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<span class="loading-spinner"></span> Processando...';
+        submitBtn.disabled = true;
+        
+        try {
+            const nome = document.getElementById("clienteNome").value.trim();
+            const email = document.getElementById("clienteEmail").value.trim();
+            const telefone = document.getElementById("clienteTel").value.trim();
+            const servicoId = parseInt(document.getElementById("servicoSelect").value);
+            const data = document.getElementById("dataAgendamento").value;
+            const hora = document.getElementById("horaSelecionada").value;
+            const observacao = document.getElementById("obs").value.trim();
+            
+            if (!nome || !email || !telefone || !data || !hora) {
+                showToast("Preencha todos os campos", true);
+                return;
+            }
+            if (!email.includes('@')) { showToast("E-mail inválido", true); return; }
+            if (telefone.length < 10) { showToast("Telefone inválido", true); return; }
+            
+            const servicoEscolhido = servicos.find(s => s.id === servicoId);
+            const ocupados = getHorariosOcupados(data);
+            if (ocupados.includes(hora)) { showToast("Horário já ocupado", true); return; }
+            
+            const dataHoje = new Date();
+            const dataAgend = new Date(data);
+            dataAgend.setHours(0,0,0,0);
+            dataHoje.setHours(0,0,0,0);
+            if (dataAgend < dataHoje) { showToast("Data inválida", true); return; }
+
+            const novoAgendamento = {
+                id: Date.now(), nome, email, telefone, servicoId,
+                servicoNome: servicoEscolhido.nome, preco: servicoEscolhido.preco,
+                data, hora, observacao, criadoEm: new Date().toISOString(),
+                lgpdAceito: true
+            };
+            
+            agendamentos.push(novoAgendamento);
+            salvarAgendamentosStorage();
+            await enviarEmailConfirmacao(novoAgendamento);
+            
+            const dadosWhatsApp = {
+                nome: nome, telefone: telefone, email: email,
+                servico: servicoEscolhido.nome, preco: servicoEscolhido.preco,
+                data: data, hora: hora, observacao: observacao
+            };
+            
+            enviarWhatsApp(dadosWhatsApp);
+            showToast("✅ Agendamento confirmado! WhatsApp será aberto para envio da mensagem.");
+            
+            document.getElementById("clienteNome").value = "";
+            document.getElementById("clienteEmail").value = "";
+            document.getElementById("clienteTel").value = "";
+            document.getElementById("obs").value = "";
+            document.getElementById("horaSelecionada").value = "";
+            document.getElementById("lgpdCheckbox").checked = false;
+            selectedHora = "";
+            if (document.getElementById("dataAgendamento").value) renderizarHorarios(document.getElementById("dataAgendamento").value);
+            
+        } catch (error) {
+            console.error(error);
+            showToast("Erro ao agendar", true);
+        } finally {
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+        }
+    }
+
+    function onDataChange() {
+        const dataValue = document.getElementById("dataAgendamento").value;
+        selectedHora = "";
+        document.getElementById("horaSelecionada").value = "";
+        if (dataValue) renderizarHorarios(dataValue);
+        else document.getElementById("horariosContainer").innerHTML = "<div style='padding:0.5rem; color:#aaa;'>Selecione uma data</div>";
+    }
+
+    function setMinDate() {
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById("dataAgendamento").setAttribute("min", today);
+    }
+
+    function abrirModal() {
+        document.getElementById("lgpdModal").style.display = "flex";
+    }
+
+    function fecharModal() {
+        document.getElementById("lgpdModal").style.display = "none";
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        carregarAgendamentosStorage();
+        preencherServicos();
+        criarCardsServicos();
+        criarGaleria();
+        setMinDate();
+        document.getElementById("dataAgendamento").addEventListener("change", onDataChange);
+        document.getElementById("bookingForm").addEventListener("submit", adicionarAgendamento);
+        document.getElementById("openLgpdModal").addEventListener("click", (e) => {
+            e.preventDefault();
+            abrirModal();
+        });
+        window.addEventListener("click", (e) => {
+            if (e.target === document.getElementById("lgpdModal")) {
+                fecharModal();
+            }
+        });
+        if (document.getElementById("dataAgendamento").value) renderizarHorarios(document.getElementById("dataAgendamento").value);
+    });
+</script>
+</body>
+</html>
