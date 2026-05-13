@@ -49,6 +49,7 @@
             color: #e8a2b6;
         }
 
+        /* Menu Desktop */
         .nav-links {
             display: flex;
             gap: 2rem;
@@ -67,16 +68,97 @@
             color: #e8a2b6;
         }
 
+        /* Botão Menu Hamburguer (escondido em desktop) */
+        .menu-hamburguer {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            z-index: 101;
+        }
+
+        .menu-hamburguer span {
+            width: 25px;
+            height: 3px;
+            background: #e8a2b6;
+            border-radius: 3px;
+            transition: 0.3s;
+        }
+
+        /* Menu Mobile */
+        .menu-mobile {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 70%;
+            max-width: 300px;
+            height: 100vh;
+            background: #ffffff;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: 0.3s ease;
+            padding: 4rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .menu-mobile.active {
+            right: 0;
+        }
+
+        .menu-mobile a {
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #4a4a4a;
+            padding: 0.5rem 0;
+            transition: 0.2s;
+            border-bottom: 1px solid #fce4ea;
+        }
+
+        .menu-mobile a:hover {
+            color: #e8a2b6;
+            padding-left: 0.5rem;
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #e8a2b6;
+            background: none;
+            border: none;
+        }
+
+        /* Overlay quando menu aberto */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+            display: none;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        /* Responsivo - Menu Hamburguer */
         @media (max-width: 700px) {
-            .nav-container {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
-            }
             .nav-links {
-                justify-content: center;
-                flex-wrap: wrap;
-                gap: 1.2rem;
+                display: none;
+            }
+            .menu-hamburguer {
+                display: flex;
+            }
+            .nav-container {
+                justify-content: space-between;
             }
         }
 
@@ -700,13 +782,27 @@
             cursor: pointer;
             margin-top: 1rem;
         }
+
+        .badge-mimo {
+            display: inline-block;
+            background: linear-gradient(135deg, #e8a2b6, #d48aa0);
+            color: white;
+            font-size: 0.65rem;
+            font-weight: bold;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            margin-top: 0.3rem;
+            text-transform: uppercase;
+        }
     </style>
 </head>
 <body>
 
 <header>
     <div class="nav-container">
-        <div class="logo">eduarda <span>design</span></div>
+        <div class="logo">Eduarda <span>Design</span></div>
+        
+        <!-- Menu Desktop -->
         <ul class="nav-links">
             <li><a href="#home">Início</a></li>
             <li><a href="#sobre">Sobre</a></li>
@@ -714,7 +810,25 @@
             <li><a href="#galeria">Resultados</a></li>
             <li><a href="#agendar">Agendar</a></li>
         </ul>
+
+        <!-- Botão Menu Hamburguer (mobile) -->
+        <div class="menu-hamburguer" id="menuHamburguer">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </div>
+
+    <!-- Menu Mobile (lateral) -->
+    <div class="menu-mobile" id="menuMobile">
+        <button class="close-menu" id="closeMenu">✕</button>
+        <a href="#home">🏠 Início</a>
+        <a href="#sobre">👩‍🦳 Sobre</a>
+        <a href="#servicos">💅 Procedimentos</a>
+        <a href="#galeria">📸 Resultados</a>
+        <a href="#agendar">📅 Agendar</a>
+    </div>
+    <div class="overlay" id="overlay"></div>
 </header>
 
 <section id="home" class="hero">
@@ -811,7 +925,7 @@
 
             <button type="submit" class="btn-submit" id="submitBtn">Confirmar agendamento</button>
             <div class="info-banner">
-                ⏱️ Agendamento sujeito à confirmação | 💖 Espaço exclusivo
+                ⏱️ Horário de funcionamento: Terça a Sábado, das 08h às 16h30 | 💖 Espaço exclusivo
             </div>
         </form>
     </div>
@@ -838,11 +952,48 @@
         Rua Cezar Moranza, 6 - Vila Santa Terezinha<br>
         Sumaré - SP | CEP: 13174-405
     </div>
-    <p style="margin-top: 0.8rem;">© 2024 • Todos os direitos reservados</p>
+    <p style="margin-top: 0.8rem;">© 2026 • Todos os direitos reservados</p>
 </footer>
 
 <script>
-    // CONFIGURAÇÃO DO EMAILJS (SUBSTITUIR AQUI)
+    // MENU HAMBURGUER - JAVASCRIPT
+    const menuHamburguer = document.getElementById('menuHamburguer');
+    const menuMobile = document.getElementById('menuMobile');
+    const overlay = document.getElementById('overlay');
+    const closeMenu = document.getElementById('closeMenu');
+
+    function abrirMenu() {
+        menuMobile.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function fecharMenu() {
+        menuMobile.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    menuHamburguer.addEventListener('click', abrirMenu);
+    closeMenu.addEventListener('click', fecharMenu);
+    overlay.addEventListener('click', fecharMenu);
+
+    // Fechar menu ao clicar em um link
+    document.querySelectorAll('.menu-mobile a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            fecharMenu();
+            const href = link.getAttribute('href');
+            if (href && href !== '#') {
+                const elemento = document.querySelector(href);
+                if (elemento) {
+                    e.preventDefault();
+                    elemento.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+    });
+
+    // CONFIGURAÇÃO DO EMAILJS
     const EMAILJS_CONFIG = {
         PUBLIC_KEY: "YOUR_PUBLIC_KEY",
         SERVICE_ID: "YOUR_SERVICE_ID",
@@ -856,7 +1007,7 @@
         emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
     }
 
-    // SERVIÇOS COM IMAGENS LOCAIS E CLASSES ESPECIAIS PARA AUMENTAR
+    // SERVIÇOS
     const servicos = [
         { id: 1, nome: "Design com Henna", desc: "Método Flow Beauty, alinhamento perfeito e resultado natural", preco: 50, tempo: "1h", imagem: "imagens/design-henna.jpeg", classe: "" },
         { id: 2, nome: "Microblading Fios Realistas", desc: "Técnica manual que reproduz o aspecto natural dos pelos", preco: 350, tempo: "2h", imagem: "imagens/microblading.jpeg", classe: "microblading" },
@@ -864,7 +1015,7 @@
         { id: 4, nome: "Brow Lamination", desc: "Realinhamento e preenchimento, efeito natural", preco: 80, tempo: "1h", imagem: "imagens/brow-lamination.jpeg", classe: "" },
         { id: 5, nome: "Lash Lifting", desc: "Cílios naturalmente curvados", preco: 100, tempo: "1h", imagem: "imagens/lash-lifting.jpeg", classe: "" },
         { id: 6, nome: "Design Simples", desc: "Manutenção do formato", preco: 40, tempo: "30min", imagem: "imagens/design-simples.jpeg", classe: "design-simples" },
-        { id: 7, nome: "Spa de Lábios", desc: "Esfoliação + hidratação", preco: 40, tempo: "40min", imagem: "imagens/spa-labios.jpeg", classe: "" }
+        { id: 7, nome: "🎁 Mimo de Aniversário / 1º Atendimento", desc: "Spa de lábios completo - Esfoliação + hidratação profunda. Cortesia especial para sua primeira visita ou aniversariantes!", preco: 0, tempo: "40min", imagem: "imagens/spa-labios.jpeg", classe: "", badge: "GRATUITO" }
     ];
 
     // GALERIA
@@ -875,7 +1026,8 @@
         { nome: "Lash Lifting", antes: "ANTES", depois: "DEPOIS", img: "imagens/resultado-lash.jpg" }
     ];
 
-    const horariosPadrao = ["09:00", "10:00", "11:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"];
+    // HORÁRIOS
+    const horariosPadrao = ["08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00"];
     let agendamentos = [];
 
     function formatarDataNascimento(dataNascimento) {
@@ -895,7 +1047,7 @@
 🎂 *Data de Nascimento:* ${dataNascimentoFormatada}
 
 💅 *Procedimento:* ${dados.servico}
-💰 *Valor:* R$ ${dados.preco}
+💰 *Valor:* ${dados.preco === 0 ? "GRATUITO (Mimo)" : `R$ ${dados.preco}`}
 
 📅 *Data:* ${dados.data}
 ⏰ *Horário:* ${dados.hora}
@@ -933,7 +1085,7 @@ Sumaré - SP | CEP: 13174-405
                 servico: servico.nome,
                 data: agendamento.data,
                 hora: agendamento.hora,
-                preco: `R$ ${servico.preco}`,
+                preco: servico.preco === 0 ? "GRATUITO" : `R$ ${servico.preco}`,
                 observacao: agendamento.observacao || "Nenhuma",
                 studio_email: STUDIO_EMAIL
             };
@@ -945,7 +1097,7 @@ Sumaré - SP | CEP: 13174-405
                 servico: servico.nome,
                 data: agendamento.data,
                 hora: agendamento.hora,
-                preco: `R$ ${servico.preco}`,
+                preco: servico.preco === 0 ? "GRATUITO" : `R$ ${servico.preco}`,
                 observacao: agendamento.observacao || "Nenhuma"
             };
             await emailjs.send(EMAILJS_CONFIG.SERVICE_ID, EMAILJS_CONFIG.TEMPLATE_ID, templateParamsCliente);
@@ -1006,7 +1158,11 @@ Sumaré - SP | CEP: 13174-405
         servicos.forEach(serv => {
             const option = document.createElement("option");
             option.value = serv.id;
-            option.textContent = `${serv.nome} - R$ ${serv.preco}`;
+            if (serv.preco === 0) {
+                option.textContent = `${serv.nome} - ${serv.badge}`;
+            } else {
+                option.textContent = `${serv.nome} - R$ ${serv.preco}`;
+            }
             select.appendChild(option);
         });
     }
@@ -1025,8 +1181,8 @@ Sumaré - SP | CEP: 13174-405
                 <div class="${imagemClass}">
                     <img src="${serv.imagem}" alt="${serv.nome}" onerror="this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAw--8DCac8RG_gRFYLkUIYiuu3X3wlJRNMQ&s'">
                 </div>
-                <h3>${serv.nome}</h3>
-                <div class="price">R$ ${serv.preco}</div>
+                <h3>${serv.nome} ${serv.badge ? `<span class="badge-mimo">${serv.badge}</span>` : ''}</h3>
+                <div class="price">${serv.preco === 0 ? '🎁 GRÁTIS' : `R$ ${serv.preco}`}</div>
                 <p>${serv.desc}</p>
                 <small>⏱️ ${serv.tempo}</small>
             `;
@@ -1065,6 +1221,12 @@ Sumaré - SP | CEP: 13174-405
         });
     }
 
+    function getDiaSemana(data) {
+        const dias = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
+        const date = new Date(data);
+        return dias[date.getDay()];
+    }
+
     async function adicionarAgendamento(event) {
         event.preventDefault();
         
@@ -1095,6 +1257,12 @@ Sumaré - SP | CEP: 13174-405
             }
             if (!email.includes('@')) { showToast("E-mail inválido", true); return; }
             if (telefone.length < 10) { showToast("Telefone inválido", true); return; }
+            
+            const diaSemana = getDiaSemana(data);
+            if (diaSemana === "Domingo" || diaSemana === "Segunda") {
+                showToast("Atendimento apenas de Terça a Sábado! Por favor, escolha outra data.", true);
+                return;
+            }
             
             const servicoEscolhido = servicos.find(s => s.id === servicoId);
             const ocupados = getHorariosOcupados(data);
@@ -1149,8 +1317,16 @@ Sumaré - SP | CEP: 13174-405
         const dataValue = document.getElementById("dataAgendamento").value;
         selectedHora = "";
         document.getElementById("horaSelecionada").value = "";
-        if (dataValue) renderizarHorarios(dataValue);
-        else document.getElementById("horariosContainer").innerHTML = "<div style='padding:0.5rem; color:#aaa;'>Selecione uma data</div>";
+        if (dataValue) {
+            const diaSemana = getDiaSemana(dataValue);
+            if (diaSemana === "Domingo" || diaSemana === "Segunda") {
+                document.getElementById("horariosContainer").innerHTML = "<div style='padding:0.5rem; color:#e8a2b6; font-weight:bold;'>🚫 Atendimento apenas de TERÇA a SÁBADO! 🚫</div>";
+            } else {
+                renderizarHorarios(dataValue);
+            }
+        } else {
+            document.getElementById("horariosContainer").innerHTML = "<div style='padding:0.5rem; color:#aaa;'>Selecione uma data</div>";
+        }
     }
 
     function setMinDate() {
