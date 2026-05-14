@@ -1,2 +1,2 @@
-# meu-site-sobrancelhas
+# site-sobrancelhas
 Site da Maria Eduarda Design
